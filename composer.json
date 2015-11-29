@@ -1,0 +1,41 @@
+{
+    "name": "webiny/geoip",
+    "type": "library",
+    "description": "Geo location component",
+    "keywords": [
+        "geo location",
+        "geoip"
+    ],
+    "homepage": "http://www.webiny.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sven Al Hamad",
+            "email": "sven@webiny.com"
+        },
+        {
+            "name": "Pavel Denisjuk",
+            "email": "pavel@webiny.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5.9",
+        "webiny/http": "^1.3",
+        "webiny/entity": "^1.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4",
+        "mybuilder/phpunit-accelerator": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webiny\\GeoIp\\": "src/Webiny/GeoIp/"
+        }
+    },
+    "extras": {
+        "branch-alias": {
+            "dev-master": "master-dev"
+        }
+    }
+}
