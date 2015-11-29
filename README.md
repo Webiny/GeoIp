@@ -43,7 +43,7 @@ For additional versions of the package, visit the [Packagist page](https://packa
 
 ### FreeGeoIp
 
-If you plan to use the `FreeGeoIp` API, no setup is required, just create pass the provider instance to the `GeoIp` class, like so:
+If you plan to use the `FreeGeoIp` API, no setup is required, just create a provider instance and pass it to the `GeoIp` class, like so:
 
 ```php
 $providerInstance = new \Webiny\GeoIp\Provider\FreeGeoIp\FreeGeoIp()
@@ -81,10 +81,10 @@ The `Entity` and `Mongo` section are standard configurations as described under 
 Once you have your configuration in place, run the following command in your terminal:
 
 ``` bash
-php /path/to/src/Webiny/GeoIp/Provider/MaxMindGeoLite2/run-installer abs-path-to-your-config-yaml-file
+php /path/to/src/Webiny/GeoIp/Provider/MaxMindGeoLite2/run-installer.php abs-path-to-your-config-yaml-file
 ```
 
-This will download the GeoLite2 database and setup the Mongo collections for you. Note that the process might take up to 15-30 min, depending on your hardware configuration.
+This will download the GeoLite2 database and setup the Mongo collections for you. Note that the process might take up to 15-30 min, depending on your hardware.
 
 Once the installation finishes, you can use the provider like so:
 
