@@ -17,7 +17,7 @@
     </listeners>
     <testsuites>
         <testsuite name="Webiny GeoIp Test Suite">
-            <directory>./test/unit/</directory>
+            <directory>./test/</directory>
         </testsuite>
     </testsuites>
 </phpunit>

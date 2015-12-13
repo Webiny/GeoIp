@@ -46,6 +46,7 @@ class GeoIp
      *
      * @return Location
      * @throws GeoIpException
+     * @throws \Exception
      */
     public function getGeoIpLocation($ip = null)
     {
@@ -54,7 +55,8 @@ class GeoIp
         }
 
         // check if we have it in session
-        $geoData = $this->httpSession()->get(self::SESSION_KEY, false);
+        $sessionKey = $this->getSessionKey($ip);
+        $geoData = $this->httpSession()->get($sessionKey, false);
         if ($geoData) {
             $location = new Location();
             $location->populate($geoData);
@@ -64,7 +66,7 @@ class GeoIp
 
         $protocol = $this->getIpProtocol($ip);
 
-        try{
+        try {
             if ($protocol == 4) {
                 $location = $this->provider->getLocationFromIPv4($ip);
             } else {
@@ -72,12 +74,12 @@ class GeoIp
             }
 
             // save it into session
-            $this->httpSession()->save(self::SESSION_KEY, $location->exportToJson());
+            $this->httpSession()->save($sessionKey, $location->exportToJson());
 
             return $location;
-        }catch (ProviderGeoIpNotFound $e){
+        } catch (ProviderGeoIpNotFound $e) {
             return false;
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             throw $e;
         }
     }
@@ -115,4 +117,8 @@ class GeoIp
         return $this->httpRequest()->getClientIp();
     }
 
+    private function getSessionKey($ip)
+    {
+        return self::SESSION_KEY . '_' . md5($ip);
+    }
 }
