@@ -11,16 +11,13 @@ namespace Webiny\GeoIp\Provider\MaxMindGeoLite2;
  *
  * @package Webiny\GeoIp\Provider\MaxMindGeoLite2
  */
-class LocationEntity extends \Webiny\Component\Entity\EntityAbstract
+class LocationEntity extends \Webiny\Component\Entity\AbstractEntity
 {
     protected static $entityCollection = "GeoIpLocation";
 
-    /**
-     * This method is called during instantiation to build entity structure
-     * @return void
-     */
-    protected function entityStructure()
+    public function __construct()
     {
+        parent::__construct();
         $this->attr('geoId')->integer()
              ->attr("continentCode")->char()
              ->attr("continentName")->char()

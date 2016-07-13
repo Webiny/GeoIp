@@ -11,18 +11,15 @@ namespace Webiny\GeoIp\Provider\MaxMindGeoLite2;
  *
  * @package Webiny\GeoIp\Provider\MaxMindGeoLite2
  */
-class CityBlockIp6Entity extends \Webiny\Component\Entity\EntityAbstract
+class CityBlockIp6Entity extends \Webiny\Component\Entity\AbstractEntity
 {
     protected static $entityCollection = "GeoIpCityBlockIp6";
 
-    /**
-     * This method is called during instantiation to build entity structure
-     * @return void
-     */
-    protected function entityStructure()
+    public function __construct()
     {
-        $this->attr('rangeStart')->float()
-             ->attr("rangeEnd")->float()
-             ->attr("geoId")->integer();
+        parent::__construct();
+        $this->attr('rangeStart')->float();
+        $this->attr('rangeEnd')->float();
+        $this->attr('geoId')->integer();
     }
 }
