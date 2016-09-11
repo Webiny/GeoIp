@@ -80,6 +80,13 @@ class FreeGeoIp implements ProviderInterface
         if ($geoData == false) {
             return false;
         }
+        
+        // Since setCountry throws an exception if country_code is missing, let's check it here before proceeding
+        // This can happen if provider returns empty results - happened when sent a local IP address
+        $hasCountryCode = isset($geoData['country_code']) && $geoData['country_code'] && strlen($geoData['country_code']) === 2;
+        if (!$hasCountryCode) {
+            return false;
+        }
 
         $location = new Location();
         $location->setCountry($geoData['country_code'], $geoData['country_name']);
